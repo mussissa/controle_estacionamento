@@ -1,0 +1,76 @@
+﻿@model IEnumerable<estacionamento.Models.model1.controle_estacionamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2 class="text-center">Estacionamento </h2>
+<h3 class="text-center">Campeão</h3>
+
+<p >
+    <input type="button" class="btn btn-primary  pull-right" value="Marcar Entrada" onclick="location.href='@Url.Action("Create", "controle_estacionamento")'" />
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            Placa
+        </th>
+        <th>
+            Horário de Chegada
+        </th>
+        <th>
+            Horário de Saída
+        </th>
+        <th>
+            Duração
+        </th>
+        <th>
+           Tempo cobrado(hora)
+        </th>
+        <th>
+            Preço R$
+        </th>
+        <th>
+           Valor a Pagar
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.placa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horario_chegada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horario_saida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tempo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preco)
+        </td>
+        
+        <td>
+           <strong> @Html.DisplayFor(modelItem => item.valor_pagamento)</strong>
+        </td>
+        
+        @if (item.liberado == false)
+        {
+            <td>
+                <input type="button" class="btn btn-danger pull-right" value="Marcar Saida" onclick="location.href='@Url.Action("Edit", "controle_estacionamento", new { id=item.placa })'" />
+
+            </td>
+        }
+
+    </tr>
+}
+
+</table>

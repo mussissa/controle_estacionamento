@@ -1,0 +1,57 @@
+﻿@model IEnumerable<estacionamento.Models.model1.vigencia_valor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Valores por Período</h2>
+
+<p>
+    <input type="button" class="btn btn-primary  pull-right" value="Novo Período" onclick="location.href='@Url.Action("Create", "vigencia_valor")'" />
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Data Inicio
+        </th>
+        <th>
+            Data Fim
+        </th>
+
+        <th>
+            Valor
+        </th>
+
+        <th>
+            Valor Adcional
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dt_inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dt_fim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preco)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.preco_adcional)
+            </td>
+
+            <td>
+                <input type="button" class="btn btn-success pull-right" value="Editar" onclick="location.href='@Url.Action("Edit", new { dt_inicio = item.dt_inicio, dt_fim = item.dt_fim } )'" />
+                <input type="button" class="btn btn-danger pull-right" value="Deletar" onclick="location.href='@Url.Action("Delete", new { dt_inicio = item.dt_inicio, dt_fim = item.dt_fim } )'" />
+            </td>
+        </tr>
+    }
+
+</table>

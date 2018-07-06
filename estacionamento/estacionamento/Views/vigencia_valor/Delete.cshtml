@@ -1,0 +1,54 @@
+﻿@model estacionamento.Models.model1.vigencia_valor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Deseja Deletar Este Registro?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_inicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_fim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_fim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preco_adcional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_adcional)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="button" class="btn btn-primary" value="VOLTAR" onclick="location.href='@Url.Action("Index")'" />
+        </div>
+    }
+</div>
